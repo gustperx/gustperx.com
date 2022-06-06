@@ -18,7 +18,7 @@ export const ThemeChanger = () => {
       {/* The current theme is: {theme} */}
       <button onClick={() => setTheme("winter")}>🔆</button>
       {" / "}
-      <button onClick={() => setTheme("dark-alter")}>🌙</button>
+      <button onClick={() => setTheme("night")}>🌙</button>
     </div>
   );
 };

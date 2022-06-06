@@ -4,8 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* <script src="http://localhost:3000/js/dark-mode.js"></script>
-        <script src="http://localhost:3000/js/dark-mode2.js"></script> */}
+        <script src="https://kit.fontawesome.com/cc31936ba1.js"></script>
       </Head>
       <body>
         <Main />

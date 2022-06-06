@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import Head from "next/head";
 
-import { Navbar } from "../ui";
+import { Footer, Navbar } from "../ui";
 
 interface Props {
   title?: string;
@@ -18,6 +18,8 @@ export const MainLayout: FC<Props> = ({ title = "Home", children }) => {
       <Navbar />
 
       {children}
+
+      <Footer />
     </>
   );
 };
