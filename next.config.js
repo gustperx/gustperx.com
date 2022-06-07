@@ -6,6 +6,9 @@ const nextConfig = {
     defaultLocale: "en-US",
     localeDetection: false,
   },
+  images: {
+    domains: ["res.cloudinary.com", "via.placeholder.com"],
+  },
 };
 
 module.exports = nextConfig;
