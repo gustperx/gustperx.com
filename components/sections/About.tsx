@@ -5,13 +5,13 @@ export const About = () => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
         <div className="grid grid-cols-1">
-          <h1 className="font-bold text-4xl mb-8 md:text-6xl md:mb-12 max-w-xl text-primary leading-tight uppercase">
+          <h1 className="font-bold text-2xl mb-8 md:text-4xl md:mb-12 max-w-xl text-primary leading-tight uppercase">
             About me
           </h1>
           <p className="mb-5 text-lg font-mono">Hi 👋🏻</p>
           <p className="mb-5 text-lg font-mono">
             I am a full stack developer with more than 6 years of experience. I
-            specialize in backend development with PHP and Node.js and currently
+            specialize in backend development with PHP and Node.js, currently
             taking my first steps with Python/Django. I am also an enthusiast of
             frontend development, designing and offering a good user experience
             with React.js, Vue.js and Tailwind CSS.
