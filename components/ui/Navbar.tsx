@@ -10,11 +10,11 @@ const menuItems = [
   },
   {
     text: "About",
-    href: "/a",
+    href: "/about",
   },
   {
-    text: "Jobs",
-    href: "/b",
+    text: "Work",
+    href: "/work",
   },
 ];
 
