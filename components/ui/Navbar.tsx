@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ThemeChanger } from "./ThemeChanger";
 import { BurgerIcon } from "./icons";
 import { NavbarItem } from "./NavbarItem";
@@ -15,6 +14,10 @@ const menuItems = [
   {
     text: "Work",
     href: "/work",
+  },
+  {
+    text: "Portfolio",
+    href: "/portfolio",
   },
 ];
 
