@@ -6,3 +6,4 @@ export * from "./ContactButtons";
 export * from "./PresentationUser";
 export * from "./Card";
 export * from "./CardMini";
+export * from "./WorkItem";

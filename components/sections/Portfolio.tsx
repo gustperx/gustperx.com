@@ -1,4 +1,4 @@
-import { Card, CardMini, ContactButtons, SocialMedia } from "../ui";
+import { Card, CardMini } from "../ui";
 
 export const Portfolio = () => {
   return (
