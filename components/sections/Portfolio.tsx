@@ -1,6 +1,8 @@
+import { FC } from "react";
+import { AllProjects } from "../../types";
 import { Card, CardMini } from "../ui";
 
-export const Portfolio = () => {
+export const Portfolio: FC<AllProjects> = ({ projects = [] }) => {
   return (
     <div className="hero min-h-screen bg-base-300">
       <div className="hero-content px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
@@ -13,9 +15,11 @@ export const Portfolio = () => {
           </h3>
           <hr className="w-12 h-1 bg-orange-500 rounded-full mb-6" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card />
-            <Card />
-            <Card />
+            {projects
+              .filter((project) => project.isFeatured)
+              .map((project) => (
+                <Card {...project} key={project.slug} />
+              ))}
           </div>
 
           <div className="divider"></div>
@@ -26,12 +30,11 @@ export const Portfolio = () => {
           <hr className="w-12 h-1 bg-orange-500 rounded-full mb-6" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <CardMini />
-            <CardMini />
-            <CardMini />
-            <CardMini />
-            <CardMini />
-            <CardMini />
+            {projects
+              .filter((project) => !project.isFeatured)
+              .map((project) => (
+                <CardMini {...project} key={project.slug} />
+              ))}
           </div>
         </div>
       </div>

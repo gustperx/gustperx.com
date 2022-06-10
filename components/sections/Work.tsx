@@ -2,7 +2,7 @@ import { FC } from "react";
 import { AllWorks } from "../../types";
 import { WorkItem } from "../ui";
 
-export const Work: FC<AllWorks> = ({ works }) => {
+export const Work: FC<AllWorks> = ({ works = [] }) => {
   return (
     <div className="hero min-h-screen bg-base-100">
       <div className="hero-content px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">

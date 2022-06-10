@@ -7,3 +7,4 @@ export * from "./PresentationUser";
 export * from "./Card";
 export * from "./CardMini";
 export * from "./WorkItem";
+export * from "./Badge";

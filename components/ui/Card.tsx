@@ -1,34 +1,40 @@
-export const Card = () => {
+import { FC } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "./";
+import { Project } from "../../types";
+
+export const Card: FC<Project> = ({
+  title,
+  shortDescription,
+  slug,
+  coverImage,
+  technologies,
+}) => {
   return (
-    <div className="max-w-sm bg-base-100 rounded-lg shadow-md">
-      <img
-        className="rounded-t-lg"
-        src="https://api.lorem.space/image/shoes?w=400&h=300"
-        alt=""
-      />
+    <Link href={`/portfolio/${slug}`}>
+      <div className="max-w-sm bg-base-100 rounded-lg shadow-md cursor-pointer">
+        {coverImage && (
+          <Image
+            src={coverImage.responsiveImage.src}
+            width={400}
+            height={250}
+            className="rounded-t-lg"
+          ></Image>
+        )}
 
-      <div className="p-5">
-        <h5 className="mb-2 text-xl font-bold tracking-tight font-mono">
-          Project 1
-        </h5>
+        <div className="p-5">
+          <h5 className="mb-2 font-bold tracking-tight font-mono">{title}</h5>
 
-        <p className="mb-3 font-mono">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit non
-          optio, quis a eaque nam doloribus explicabo amet mollitia.
-        </p>
+          <p className="mb-3 font-mono text-sm">{shortDescription}</p>
 
-        <div className="mb-4">
-          <div className="badge badge-secondary badge-outline mr-1">PHP</div>
-          <div className="badge badge-secondary badge-outline mr-1">
-            Laravel
+          <div className="mb-4">
+            {technologies.map(({ name }) => (
+              <Badge title={name} key={name} />
+            ))}
           </div>
         </div>
-
-        <a href="#" className="btn btn-outline">
-          <span className="mr-1">Read more</span>
-          <i className="fa-solid fa-arrow-right-long"></i>
-        </a>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -7,7 +7,11 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: ["res.cloudinary.com", "via.placeholder.com"],
+    domains: [
+      "res.cloudinary.com",
+      "via.placeholder.com",
+      "www.datocms-assets.com",
+    ],
   },
 };
 
