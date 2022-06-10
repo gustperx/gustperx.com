@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import { GetStaticProps } from "next";
 
+import { gql } from "graphql-request";
+
 import { Work } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
 
@@ -15,27 +17,29 @@ const WorkPage: NextPage<AllWorks> = ({ works }) => {
   );
 };
 
-const WORKPAGE_QUERY = `query QueryAllWorks {
-  allWorks(locale: en) {
-    title
-    order
-    period
-    slug
-    shortDescription
+const WORKSPAGE_QUERY = gql`
+  query QueryAllWorks($lang: SiteLocale) {
+    allWorks(locale: $lang) {
+      title
+      order
+      period
+      slug
+      shortDescription
+    }
   }
-}`;
+`;
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const data = await request({
-    query: WORKPAGE_QUERY,
+    query: WORKSPAGE_QUERY,
+    variables: {
+      lang: "en",
+    },
   });
 
-  const works: AllWorks = data.allWorks.sort(function (
-    a: WorkSingle,
-    b: WorkSingle
-  ) {
-    return a.order - b.order;
-  });
+  const works: AllWorks = data.allWorks.sort(
+    (a: WorkSingle, b: WorkSingle) => a.order - b.order
+  );
 
   return {
     props: {
