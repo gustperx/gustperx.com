@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import { Project } from "../../types";
-import { Badge } from "./";
+import { Badge, SocialProject } from "./";
 
 export const CardMini: FC<Project> = ({
   title,
@@ -16,16 +16,7 @@ export const CardMini: FC<Project> = ({
       <div className="flex justify-between">
         <i className="fa-solid fa-2x fa-folder text-secondary"></i>
         <div className="flex">
-          {github && (
-            <a href={github} target={"_blank"}>
-              <i className="fa-brands fa-2x fa-github text-secondary mr-2"></i>
-            </a>
-          )}
-          {webSite && (
-            <a href={webSite} target={"_blank"}>
-              <i className="fa-solid fa-2x fa-arrow-up-right-from-square text-secondary"></i>
-            </a>
-          )}
+          <SocialProject github={github} webSite={webSite} />
         </div>
       </div>
       <Link href={`/portfolio/${slug}`}>

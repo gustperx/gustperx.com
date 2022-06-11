@@ -10,3 +10,5 @@ export * from "./WorkItem";
 export * from "./Badge";
 export * from "./Technologies";
 export * from "./Presentation";
+export * from "./SectionImage";
+export * from "./SocialProject";

@@ -31,7 +31,16 @@ const PROJECTSPAGE_QUERY = gql`
       webSite
       coverImage {
         responsiveImage {
+          width
+          webpSrcSet
+          title
+          srcSet
           src
+          sizes
+          height
+          bgColor
+          base64
+          aspectRatio
           alt
         }
       }

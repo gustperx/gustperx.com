@@ -1,6 +1,7 @@
 import { FC } from "react";
-import Image from "next/image";
+import { Image } from "react-datocms";
 import Link from "next/link";
+
 import { Badge } from "./";
 import { Project } from "../../types";
 
@@ -15,12 +16,7 @@ export const Card: FC<Project> = ({
     <Link href={`/portfolio/${slug}`}>
       <div className="max-w-sm bg-base-100 rounded-lg shadow-md cursor-pointer">
         {coverImage && (
-          <Image
-            src={coverImage.responsiveImage.src}
-            width={400}
-            height={250}
-            className="rounded-t-lg"
-          ></Image>
+          <Image data={coverImage.responsiveImage} className="rounded-t-lg" />
         )}
 
         <div className="p-5">

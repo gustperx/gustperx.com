@@ -4,10 +4,23 @@ import { gql } from "graphql-request";
 import { MainLayout } from "../../components/layouts";
 import { request } from "../../lib/datocms";
 import { SingleProject, Slug } from "../../types";
-import { Presentation, Technologies } from "../../components/ui";
+import {
+  Presentation,
+  Technologies,
+  SectionImage,
+  SocialProject,
+} from "../../components/ui";
 
 const ProjectPage: NextPage<SingleProject> = ({
-  project: { title, description, shortDescription, technologies },
+  project: {
+    title,
+    description,
+    shortDescription,
+    coverImage,
+    technologies,
+    github,
+    webSite,
+  },
 }) => {
   return (
     <MainLayout title={title}>
@@ -15,6 +28,9 @@ const ProjectPage: NextPage<SingleProject> = ({
         <div className="hero-content text-center">
           <div>
             <Presentation title={title} shortDescription={shortDescription} />
+            <div className="flex justify-center mt-6">
+              <SocialProject github={github} webSite={webSite} />
+            </div>
           </div>
         </div>
       </div>
@@ -26,6 +42,8 @@ const ProjectPage: NextPage<SingleProject> = ({
           </div>
         </div>
       </div>
+
+      {coverImage && <SectionImage coverImage={coverImage} />}
     </MainLayout>
   );
 };

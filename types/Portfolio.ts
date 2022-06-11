@@ -1,3 +1,4 @@
+import { ResponsiveImageType } from "react-datocms";
 import { Technology } from "./";
 
 export interface Project {
@@ -7,7 +8,7 @@ export interface Project {
   slug: string;
   order: number;
   isFeatured: boolean;
-  coverImage?: any;
+  coverImage?: CoverImage;
   technologies: Technology[];
   github?: string;
   webSite?: string;
@@ -19,4 +20,8 @@ export interface AllProjects {
 
 export interface SingleProject {
   project: Project;
+}
+
+export interface CoverImage {
+  responsiveImage: ResponsiveImageType;
 }
