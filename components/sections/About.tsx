@@ -1,6 +1,9 @@
+import { FC } from "react";
+import { userLinks } from "../../lib";
+import { Profile } from "../../types";
 import { ContactButtons, SocialMedia } from "../ui";
 
-export const About = () => {
+export const About: FC<Profile> = ({ description }) => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
@@ -29,10 +32,10 @@ export const About = () => {
             results in the shortest possible time.
           </p>
           <div className="flex flex-row my-4">
-            <SocialMedia />
+            <SocialMedia {...userLinks.socialMedia} />
           </div>
           <div className="flex">
-            <ContactButtons />
+            <ContactButtons {...userLinks.contact} />
           </div>
         </div>
       </div>

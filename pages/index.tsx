@@ -1,37 +1,54 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { AllWorks, WorkSingle } from "../types";
-import { WORKSPAGE_QUERY } from "../graphql";
+import { AllWorks, Profile, WorkSingle } from "../types";
+import { PROFILE_QUERY, WORKSPAGE_QUERY } from "../graphql";
 import { ClientGraphQL } from "../lib";
 
 import { Hero, About, Work } from "../components/sections";
 import { MainLayout } from "../components/layouts";
 
-const HomePage: NextPage<AllWorks> = ({ works }) => {
+interface Props {
+  works: WorkSingle[];
+  profile: {
+    user: Profile;
+  };
+}
+
+const HomePage: NextPage<Props> = ({ works, profile: { user } }) => {
   return (
     <MainLayout title="Gustavo Perez | Home">
-      <Hero />
-      <About />
+      <Hero {...user} />
+      <About {...user} />
       <Work works={works} />
     </MainLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const data = await ClientGraphQL({
+  const worksPromise = ClientGraphQL({
     query: WORKSPAGE_QUERY,
     variables: {
       lang: "en",
     },
   });
 
-  const works: AllWorks = data.allWorks.sort(
+  const profilePromise = ClientGraphQL({
+    query: PROFILE_QUERY,
+  });
+
+  const [worksData, profileData] = await Promise.all([
+    worksPromise,
+    profilePromise,
+  ]);
+
+  const works: AllWorks = worksData.allWorks.sort(
     (a: WorkSingle, b: WorkSingle) => a.order - b.order
   );
 
   return {
     props: {
       works,
+      profile: profileData,
     },
   };
 };

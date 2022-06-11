@@ -1,5 +1,5 @@
-import { SocialMedia } from "./";
-import { ContactButtons } from "./ContactButtons";
+import { SocialMedia, ContactButtons } from "./";
+import { userLinks } from "../../lib";
 
 export const Footer = () => {
   return (
@@ -11,13 +11,13 @@ export const Footer = () => {
               Reach out to say hi or follow me
             </p>
             <p className="mb-5 text-2xl font-semibold text-primary">
-              hola@gustperx.com
+              {userLinks.contact.email}
             </p>
             <div className="flex flex-row mb-4">
-              <SocialMedia />
+              <SocialMedia {...userLinks.socialMedia} />
             </div>
             <div className="flex mb-6">
-              <ContactButtons />
+              <ContactButtons {...userLinks.contact} />
             </div>
             <p className="text-md font-mono">Made with ♥ in Venezuela.</p>
           </div>

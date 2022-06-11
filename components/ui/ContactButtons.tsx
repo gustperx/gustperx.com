@@ -1,8 +1,27 @@
-export const ContactButtons = () => {
+import { FC } from "react";
+
+interface Props {
+  linkedin: string;
+  cv: string;
+}
+
+export const ContactButtons: FC<Props> = ({ linkedin, cv }) => {
   return (
     <>
-      <a className="btn btn-outline btn-secondary mt-4 w-40 mr-2">Contact me</a>
-      <a className="btn btn-outline btn-secondary mt-4 w-40">Resume</a>
+      <a
+        href={linkedin}
+        className="btn btn-outline btn-secondary mt-4 w-40 mr-2"
+        target={"_blank"}
+      >
+        Contact me
+      </a>
+      <a
+        href={cv}
+        className="btn btn-outline btn-secondary mt-4 w-40"
+        target={"_blank"}
+      >
+        Download CV
+      </a>
     </>
   );
 };
