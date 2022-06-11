@@ -1,9 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { gql } from "graphql-request";
+
+import { Slug, Work } from "../../types";
+import { WORKPAGE_QUERY, WORKPAGE_SLUG_QUERY } from "../../graphql";
+import { ClientGraphQL } from "../../lib";
 
 import { MainLayout } from "../../components/layouts";
-import { request } from "../../lib/datocms";
-import { Slug, Work } from "../../types";
 import { Presentation, Technologies } from "../../components/ui";
 
 const WorkPage: NextPage<Work> = ({
@@ -34,32 +35,8 @@ const WorkPage: NextPage<Work> = ({
   );
 };
 
-const WORKPAGE_SLUG_QUERY = gql`
-  query WorkSlugQuery {
-    allWorks {
-      slug
-    }
-  }
-`;
-
-const WORKPAGE_QUERY = gql`
-  query WorkQuery($slug: String) {
-    allWorks(filter: { slug: { eq: $slug } }) {
-      title
-      shortDescription
-      description
-      period
-      slug
-      order
-      technologies {
-        name
-      }
-    }
-  }
-`;
-
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: WORKPAGE_SLUG_QUERY,
   });
 
@@ -70,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: WORKPAGE_QUERY,
     variables: params as { slug: string },
   });

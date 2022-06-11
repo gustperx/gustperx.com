@@ -5,7 +5,7 @@ interface Request {
   variables?: { [id: string]: string | number };
 }
 
-export const request = ({ query, variables }: Request) => {
+export const ClientGraphQL = ({ query, variables }: Request) => {
   const endpoint = `https://graphql.datocms.com/`;
   const client = new GraphQLClient(endpoint, {
     headers: {

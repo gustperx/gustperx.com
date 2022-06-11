@@ -1,13 +1,11 @@
-import type { NextPage } from "next";
-import { GetStaticProps } from "next";
+import type { NextPage, GetStaticProps } from "next";
 
-import { gql } from "graphql-request";
+import { AllWorks, WorkSingle } from "../../types";
+import { WORKSPAGE_QUERY } from "../../graphql";
+import { ClientGraphQL } from "../../lib";
 
 import { Work } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
-
-import { AllWorks, WorkSingle } from "../../types";
-import { request } from "../../lib/datocms";
 
 const WorkPage: NextPage<AllWorks> = ({ works }) => {
   return (
@@ -17,20 +15,8 @@ const WorkPage: NextPage<AllWorks> = ({ works }) => {
   );
 };
 
-const WORKSPAGE_QUERY = gql`
-  query QueryAllWorks($lang: SiteLocale) {
-    allWorks(locale: $lang) {
-      title
-      order
-      period
-      slug
-      shortDescription
-    }
-  }
-`;
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: WORKSPAGE_QUERY,
     variables: {
       lang: "en",

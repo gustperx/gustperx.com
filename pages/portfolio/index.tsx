@@ -1,11 +1,11 @@
 import type { NextPage, GetStaticProps } from "next";
-import { gql } from "graphql-request";
+
+import { AllProjects, Project } from "../../types";
+import { ClientGraphQL } from "../../lib";
+import { PROJECTSPAGE_QUERY } from "../../graphql";
 
 import { Portfolio } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
-
-import { request } from "../../lib/datocms";
-import { AllProjects, Project } from "../../types";
 
 const PortfolioPage: NextPage<AllProjects> = ({ projects }) => {
   return (
@@ -15,41 +15,8 @@ const PortfolioPage: NextPage<AllProjects> = ({ projects }) => {
   );
 };
 
-const PROJECTSPAGE_QUERY = gql`
-  query QueryAllProjects($lang: SiteLocale) {
-    allProjects(locale: $lang) {
-      title
-      shortDescription
-      description
-      slug
-      order
-      isFeatured
-      technologies {
-        name
-      }
-      github
-      webSite
-      coverImage {
-        responsiveImage {
-          width
-          webpSrcSet
-          title
-          srcSet
-          src
-          sizes
-          height
-          bgColor
-          base64
-          aspectRatio
-          alt
-        }
-      }
-    }
-  }
-`;
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: PROJECTSPAGE_QUERY,
     variables: {
       lang: "en",

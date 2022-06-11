@@ -1,9 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { gql } from "graphql-request";
+
+import { SingleProject, Slug } from "../../types";
+import { ClientGraphQL } from "../../lib";
+import { PROJECTPAGE_QUERY, PROJECTPAGE_SLUG_QUERY } from "../../graphql";
 
 import { MainLayout } from "../../components/layouts";
-import { request } from "../../lib/datocms";
-import { SingleProject, Slug } from "../../types";
 import {
   Presentation,
   Technologies,
@@ -48,49 +49,8 @@ const ProjectPage: NextPage<SingleProject> = ({
   );
 };
 
-const PROJECTPAGE_SLUG_QUERY = gql`
-  query ProjectSlugQuery {
-    allProjects {
-      slug
-    }
-  }
-`;
-
-const PROJECTPAGE_QUERY = gql`
-  query WorkQuery($slug: String) {
-    allProjects(filter: { slug: { eq: $slug } }) {
-      title
-      shortDescription
-      description
-      slug
-      order
-      isFeatured
-      webSite
-      github
-      technologies {
-        name
-      }
-      coverImage {
-        responsiveImage {
-          width
-          webpSrcSet
-          title
-          srcSet
-          src
-          sizes
-          height
-          bgColor
-          base64
-          aspectRatio
-          alt
-        }
-      }
-    }
-  }
-`;
-
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: PROJECTPAGE_SLUG_QUERY,
   });
 
@@ -101,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await request({
+  const data = await ClientGraphQL({
     query: PROJECTPAGE_QUERY,
     variables: params as { slug: string },
   });
