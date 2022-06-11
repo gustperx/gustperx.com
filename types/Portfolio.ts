@@ -16,3 +16,7 @@ export interface Project {
 export interface AllProjects {
   projects: Project[];
 }
+
+export interface SingleProject {
+  project: Project;
+}
