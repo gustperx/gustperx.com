@@ -8,7 +8,7 @@ interface Props {
 
 export const PresentationUser: FC<Props> = ({ coverImage }) => {
   return (
-    <div className="mask mask-hexagon">
+    <div className="mask mask-hexagon bg-gray-400">
       <Image data={coverImage.responsiveImage} />
     </div>
   );
