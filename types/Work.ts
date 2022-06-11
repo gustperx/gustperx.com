@@ -20,6 +20,14 @@ export interface AllWorks {
   works: WorkSingle[];
 }
 
+export interface Work {
+  work: WorkFull;
+}
+
 export interface Technology {
   name: string;
+}
+
+export interface Slug {
+  slug: string;
 }
