@@ -8,3 +8,5 @@ export * from "./Card";
 export * from "./CardMini";
 export * from "./WorkItem";
 export * from "./Badge";
+export * from "./Technologies";
+export * from "./Presentation";

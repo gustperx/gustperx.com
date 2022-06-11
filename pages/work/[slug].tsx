@@ -4,6 +4,7 @@ import { gql } from "graphql-request";
 import { MainLayout } from "../../components/layouts";
 import { request } from "../../lib/datocms";
 import { Slug, Work } from "../../types";
+import { Presentation, Technologies } from "../../components/ui";
 
 const WorkPage: NextPage<Work> = ({
   work: { title, description, shortDescription, period, technologies },
@@ -12,31 +13,20 @@ const WorkPage: NextPage<Work> = ({
     <MainLayout title={title}>
       <div className="hero h-80 bg-base-200">
         <div className="hero-content text-center">
-          <div className="">
-            <h1 className="text-2xl text-primary font-bold uppercase">
-              {title}
-            </h1>
-            <p className="pt-6 font-mono">{shortDescription}</p>
-            <p className="py-6 font-semibold font-mono italic">{period}</p>
+          <div>
+            <Presentation
+              title={title}
+              shortDescription={shortDescription}
+              period={period}
+            />
           </div>
         </div>
       </div>
       <div className="hero my-8 bg-base-100">
         <div className="hero-content">
-          <div className="">
+          <div>
             <p className="py-6 font-mono text-lg">{description}</p>
-
-            <h3 className="py-6 text-2xl font-semibold text-secondary font-mono uppercase">
-              Technologies
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {technologies.map((item) => (
-                <div key={item.name} className="font-semibold font-mono">
-                  {item.name}
-                </div>
-              ))}
-            </div>
+            <Technologies technologies={technologies} />
           </div>
         </div>
       </div>

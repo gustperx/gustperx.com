@@ -4,7 +4,7 @@ import { Card, CardMini } from "../ui";
 
 export const Portfolio: FC<AllProjects> = ({ projects = [] }) => {
   return (
-    <div className="hero min-h-screen bg-base-300">
+    <div className="hero min-h-screen bg-base-200">
       <div className="hero-content px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
         <div className="flex flex-col my-8">
           <h1 className="font-bold text-2xl mb-6 md:text-4xl md:mb-6 max-w-xl text-primary leading-tight uppercase">
