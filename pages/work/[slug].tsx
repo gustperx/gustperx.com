@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { Slug, Work } from "../../types";
-import { WORKPAGE_QUERY, WORKPAGE_SLUG_QUERY } from "../../graphql";
-import { ClientGraphQL } from "../../lib";
+import { useWork } from "../../hooks";
+import { Work, SlugWorkParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";
 import { Presentation, Technologies } from "../../components/ui";
@@ -36,25 +35,18 @@ const WorkPage: NextPage<Work> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const data = await ClientGraphQL({
-    query: WORKPAGE_SLUG_QUERY,
-  });
-
+  const { getSlugs } = useWork();
   return {
-    paths: data.allWorks.map((slug: Slug) => ({ params: slug })),
+    paths: await getSlugs(),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await ClientGraphQL({
-    query: WORKPAGE_QUERY,
-    variables: params as { slug: string },
-  });
-
+  const { getWork } = useWork();
   return {
     props: {
-      work: data.allWorks[0],
+      work: await getWork(params as SlugWorkParams),
     },
   };
 };

@@ -31,3 +31,5 @@ export interface Technology {
 export interface Slug {
   slug: string;
 }
+
+export type SlugWorkParams = { slug: string };
