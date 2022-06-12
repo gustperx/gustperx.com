@@ -14,7 +14,6 @@ export const useProfile = () => {
   };
 
   return {
-    allDataGraphQL,
     getProfile,
   };
 };

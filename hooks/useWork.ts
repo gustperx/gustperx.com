@@ -49,10 +49,8 @@ export const useWork = () => {
   };
 
   return {
-    allDataGraphQL,
     getWorks,
     getSlugs,
     getWork,
-    orderWorks,
   };
 };

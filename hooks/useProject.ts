@@ -49,10 +49,8 @@ export const useProject = () => {
   };
 
   return {
-    allDataGraphQL,
     getProjects,
     getSlugs,
     getProject,
-    orderProjects,
   };
 };

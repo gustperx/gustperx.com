@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { AllWorks, Profile, WorkSingle } from "../types";
-import { PROFILE_QUERY, WORKSPAGE_QUERY } from "../graphql";
-import { ClientGraphQL } from "../lib";
+import { useProfile, useWork } from "../hooks";
+import { Profile, WorkSingle } from "../types";
 
 import { Hero, About, Work } from "../components/sections";
 import { MainLayout } from "../components/layouts";
@@ -25,30 +24,15 @@ const HomePage: NextPage<Props> = ({ works, profile: { user } }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const worksPromise = ClientGraphQL({
-    query: WORKSPAGE_QUERY,
-    variables: {
-      lang: "en",
-    },
-  });
+  const { getWorks } = useWork();
+  const { getProfile } = useProfile();
 
-  const profilePromise = ClientGraphQL({
-    query: PROFILE_QUERY,
-  });
-
-  const [worksData, profileData] = await Promise.all([
-    worksPromise,
-    profilePromise,
-  ]);
-
-  const works: AllWorks = worksData.allWorks.sort(
-    (a: WorkSingle, b: WorkSingle) => a.order - b.order
-  );
+  const [works, profile] = await Promise.all([getWorks(), getProfile()]);
 
   return {
     props: {
       works,
-      profile: profileData,
+      profile,
     },
   };
 };
