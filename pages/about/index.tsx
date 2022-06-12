@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 
 import { Profile } from "../../types";
-import { handleProfile } from "../../hooks";
+import { handleProfile } from "../../helpers";
 
 import { About } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";

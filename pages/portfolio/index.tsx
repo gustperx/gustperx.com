@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { handleProject } from "../../hooks";
+import { handleProject } from "../../helpers";
 import { AllProjects } from "../../types";
 
 import { Portfolio } from "../../components/sections";

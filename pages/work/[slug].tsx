@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { handleWork } from "../../hooks";
+import { handleWork } from "../../helpers";
 import { Work, SlugWorkParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";

@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { handleProfile, handleWork } from "../hooks";
+import { handleProfile, handleWork } from "../helpers";
 import { Profile, WorkSingle } from "../types";
 
 import { Hero, About, Work } from "../components/sections";

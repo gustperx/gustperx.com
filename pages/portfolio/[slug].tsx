@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { handleProject } from "../../hooks";
+import { handleProject } from "../../helpers";
 import { SingleProject, SlugProjectParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";
