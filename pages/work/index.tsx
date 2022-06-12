@@ -9,7 +9,7 @@ import { MainLayout } from "../../components/layouts";
 
 const WorkPage: NextPage<AllWorks> = ({ works }) => {
   return (
-    <MainLayout title="Gustavo Perez | Work">
+    <MainLayout title="Work">
       <Work works={works} />
     </MainLayout>
   );

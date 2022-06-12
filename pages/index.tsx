@@ -16,7 +16,7 @@ interface Props {
 
 const HomePage: NextPage<Props> = ({ works, profile: { user } }) => {
   return (
-    <MainLayout title="Gustavo Perez | Home">
+    <MainLayout title="Home">
       <Hero {...user} />
       <About {...user} />
       <Work works={works} />

@@ -9,7 +9,7 @@ import { MainLayout } from "../../components/layouts";
 
 const PortfolioPage: NextPage<AllProjects> = ({ projects }) => {
   return (
-    <MainLayout title="Gustavo Perez | Projects">
+    <MainLayout title="Portfolio">
       <Portfolio projects={projects} />
     </MainLayout>
   );
