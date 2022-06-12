@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { useProject } from "../../hooks";
+import { handleProject } from "../../hooks";
 import { AllProjects } from "../../types";
 
 import { Portfolio } from "../../components/sections";
@@ -15,7 +15,7 @@ const PortfolioPage: NextPage<AllProjects> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { getProjects } = useProject();
+  const { getProjects } = handleProject();
   return {
     props: {
       projects: await getProjects(),

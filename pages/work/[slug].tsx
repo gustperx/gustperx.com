@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { useWork } from "../../hooks";
+import { handleWork } from "../../hooks";
 import { Work, SlugWorkParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";
@@ -35,7 +35,7 @@ const WorkPage: NextPage<Work> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { getSlugs } = useWork();
+  const { getSlugs } = handleWork();
   return {
     paths: await getSlugs(),
     fallback: false,
@@ -43,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { getWork } = useWork();
+  const { getWork } = handleWork();
   return {
     props: {
       work: await getWork(params as SlugWorkParams),

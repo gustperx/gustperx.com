@@ -1,7 +1,7 @@
 import { PROFILE_QUERY } from "../graphql";
 import { ClientGraphQL } from "../lib";
 
-export const useProfile = () => {
+export const handleProfile = () => {
   const allDataGraphQL = () => {
     return ClientGraphQL({
       query: PROFILE_QUERY,

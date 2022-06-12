@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { useProject } from "../../hooks";
+import { handleProject } from "../../hooks";
 import { SingleProject, SlugProjectParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";
@@ -49,7 +49,7 @@ const ProjectPage: NextPage<SingleProject> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { getSlugs } = useProject();
+  const { getSlugs } = handleProject();
   return {
     paths: await getSlugs(),
     fallback: false,
@@ -57,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { getProject } = useProject();
+  const { getProject } = handleProject();
   return {
     props: {
       project: await getProject(params as SlugProjectParams),

@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { useProfile, useWork } from "../hooks";
+import { handleProfile, handleWork } from "../hooks";
 import { Profile, WorkSingle } from "../types";
 
 import { Hero, About, Work } from "../components/sections";
@@ -24,8 +24,8 @@ const HomePage: NextPage<Props> = ({ works, profile: { user } }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { getWorks } = useWork();
-  const { getProfile } = useProfile();
+  const { getWorks } = handleWork();
+  const { getProfile } = handleProfile();
 
   const [works, profile] = await Promise.all([getWorks(), getProfile()]);
 

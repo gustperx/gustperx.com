@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 
 import { Profile } from "../../types";
-import { useProfile } from "../../hooks";
+import { handleProfile } from "../../hooks";
 
 import { About } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
@@ -21,7 +21,7 @@ const AboutPage: NextPage<Props> = ({ profile: { user } }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { getProfile } = useProfile();
+  const { getProfile } = handleProfile();
   return {
     props: {
       profile: await getProfile(),

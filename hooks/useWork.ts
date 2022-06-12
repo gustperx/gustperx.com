@@ -6,7 +6,7 @@ import {
 import { ClientGraphQL } from "../lib";
 import { Slug, WorkSingle, SlugWorkParams } from "../types";
 
-export const useWork = () => {
+export const handleWork = () => {
   const allDataGraphQL = () => {
     return ClientGraphQL({
       query: WORKSPAGE_QUERY,

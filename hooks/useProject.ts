@@ -6,7 +6,7 @@ import {
 import { ClientGraphQL } from "../lib";
 import { Project, Slug, SlugProjectParams } from "../types";
 
-export const useProject = () => {
+export const handleProject = () => {
   const allDataGraphQL = () => {
     return ClientGraphQL({
       query: PROJECTSPAGE_QUERY,
