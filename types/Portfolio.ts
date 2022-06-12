@@ -25,3 +25,5 @@ export interface SingleProject {
 export interface CoverImage {
   responsiveImage: ResponsiveImageType;
 }
+
+export type SlugProjectParams = { slug: string };

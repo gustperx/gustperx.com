@@ -45,7 +45,7 @@ export const useWork = () => {
   };
 
   const orderWorks = (allWorks: WorkSingle[]) => {
-    return allWorks.sort((a: WorkSingle, b: WorkSingle) => a.order - b.order);
+    return allWorks.sort((a, b) => a.order - b.order);
   };
 
   return {

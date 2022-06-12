@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { SingleProject, Slug } from "../../types";
-import { ClientGraphQL } from "../../lib";
-import { PROJECTPAGE_QUERY, PROJECTPAGE_SLUG_QUERY } from "../../graphql";
+import { useProject } from "../../hooks";
+import { SingleProject, SlugProjectParams } from "../../types";
 
 import { MainLayout } from "../../components/layouts";
 import {
@@ -50,25 +49,18 @@ const ProjectPage: NextPage<SingleProject> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const data = await ClientGraphQL({
-    query: PROJECTPAGE_SLUG_QUERY,
-  });
-
+  const { getSlugs } = useProject();
   return {
-    paths: data.allProjects.map((slug: Slug) => ({ params: slug })),
+    paths: await getSlugs(),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await ClientGraphQL({
-    query: PROJECTPAGE_QUERY,
-    variables: params as { slug: string },
-  });
-
+  const { getProject } = useProject();
   return {
     props: {
-      project: data.allProjects[0],
+      project: await getProject(params as SlugProjectParams),
     },
   };
 };

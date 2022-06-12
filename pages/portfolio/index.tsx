@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import { AllProjects, Project } from "../../types";
-import { ClientGraphQL } from "../../lib";
-import { PROJECTSPAGE_QUERY } from "../../graphql";
+import { useProject } from "../../hooks";
+import { AllProjects } from "../../types";
 
 import { Portfolio } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
@@ -16,22 +15,10 @@ const PortfolioPage: NextPage<AllProjects> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const data = await ClientGraphQL({
-    query: PROJECTSPAGE_QUERY,
-    variables: {
-      lang: "en",
-    },
-  });
-
-  const allProjects: Project[] = data.allProjects;
-
-  const projects = allProjects.sort(
-    (a: Project, b: Project) => a.order - b.order
-  );
-
+  const { getProjects } = useProject();
   return {
     props: {
-      projects,
+      projects: await getProjects(),
     },
   };
 };
