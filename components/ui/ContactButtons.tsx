@@ -12,6 +12,7 @@ export const ContactButtons: FC<Props> = ({ linkedin, cv }) => {
         href={linkedin}
         className="btn btn-outline btn-secondary mt-4 w-40 mr-2"
         target={"_blank"}
+        rel="noreferrer"
       >
         Contact me
       </a>
@@ -19,6 +20,7 @@ export const ContactButtons: FC<Props> = ({ linkedin, cv }) => {
         href={cv}
         className="btn btn-outline btn-secondary mt-4 w-40"
         target={"_blank"}
+        rel="noreferrer"
       >
         Download CV
       </a>
