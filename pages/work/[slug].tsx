@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import parse from "html-react-parser";
 
 import { handleWork } from "../../helpers";
 import { Work, SlugWorkParams } from "../../types";
@@ -25,7 +26,7 @@ const WorkPage: NextPage<Work> = ({
       <div className="hero my-8 bg-base-100">
         <div className="hero-content">
           <div>
-            <p className="py-6 font-mono text-lg">{description}</p>
+            {parse(description)}
             <Technologies technologies={technologies} />
           </div>
         </div>
