@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 
 import { Profile } from "../../types";
-import { ClientGraphQL } from "../../lib";
-import { PROFILE_QUERY } from "../../graphql";
+import { useProfile } from "../../hooks";
 
 import { About } from "../../components/sections";
 import { MainLayout } from "../../components/layouts";
@@ -22,13 +21,10 @@ const AboutPage: NextPage<Props> = ({ profile: { user } }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const profileData = await ClientGraphQL({
-    query: PROFILE_QUERY,
-  });
-
+  const { getProfile } = useProfile();
   return {
     props: {
-      profile: profileData,
+      profile: await getProfile(),
     },
   };
 };
