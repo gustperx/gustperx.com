@@ -6,7 +6,7 @@ export const userLinks = {
   },
   contact: {
     linkedin: "https://www.linkedin.com/in/gustperx",
-    cv: "",
+    cv: "https://drive.google.com/file/d/12xEA03J2asAEuhHkHEOxsZ4B5fr7trnx/view?usp=sharing",
     email: "gdev@gustperx.com",
   },
   seo: {
