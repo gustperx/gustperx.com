@@ -17,7 +17,7 @@ export const userLinks = {
       "react.js, vue.js, typescript, javascript, php, laravel, node, express, django, python, frontend, backend, full stack",
     title: "Gustavo Perez - Full stack developer",
     image:
-      "https://res.cloudinary.com/dpfdgvz5b/image/upload/v1655049155/me/phnbd3irvbigw1hwfl51.png",
+      "https://res.cloudinary.com/dpfdgvz5b/image/upload/v1655155265/me/zucv48owirdpybjp8r1t.jpg",
     favicon:
       "https://res.cloudinary.com/dpfdgvz5b/image/upload/v1655053083/me/unq1vnktn0ogyz4i93do.png",
   },
