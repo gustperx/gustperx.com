@@ -16,3 +16,5 @@ Full Stack Developer | PHP - Laravel - Node.js - Javascript - TypeScript - Vue.j
 ## Live
 
 👉 https://gustperx.com/
+
+Thanks
